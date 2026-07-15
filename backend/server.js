@@ -21,8 +21,11 @@ const pool = new Pool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
-});
 
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 // ================= SECRET =================
 const SECRET = process.env.SECRET;
 

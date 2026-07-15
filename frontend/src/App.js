@@ -31,7 +31,7 @@ function App() {
 
   // 🔐 LOGIN FUNCTION
   const handleLogin = async () => {
-  const res = await fetch("http://localhost:5000/login", {
+  const res = await fetch("https://trackmylife-backend.onrender.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,6 +40,7 @@ function App() {
   });
 
   const data = await res.json();
+  console.log("LOGIN RESPONSE:", data);
 
   setToken(data.token);
 
@@ -48,7 +49,7 @@ function App() {
   };
 
   const handleSignup = async () => {
-  const res = await fetch("http://localhost:5000/signup", {
+  const res = await fetch("https://trackmylife-backend.onrender.com/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -71,7 +72,7 @@ function App() {
   try {
     setLoading(true); // 🔥 start loading
 
-    const res = await fetch("http://localhost:5000/add-log", {
+    const res = await fetch("https://trackmylife-backend.onrender.com/add-log", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,19 +98,23 @@ function App() {
   const fetchLogs = useCallback(async () => {
   if (!token) return;
 
-  const res = await fetch("http://localhost:5000/logs", {
+  console.log("TOKEN:", token);
+
+  const res = await fetch("https://trackmylife-backend.onrender.com/logs", {
     headers: { Authorization: token },
   });
 
   const data = await res.json();
-  setLogs(data);
+  console.log("LOGS RESPONSE:", data);
+
+setLogs(Array.isArray(data) ? data : []);
 }, [token]);
 
 const fetchStreak = useCallback(async () => {
   if (!token) return;
 
   try {
-    const res = await fetch("http://localhost:5000/streak", {
+    const res = await fetch("https://trackmylife-backend.onrender.com/streak", {
       headers: { Authorization: token },
     });
 
