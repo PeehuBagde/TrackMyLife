@@ -24,7 +24,7 @@ const pool = new Pool({
 });
 
 // ================= SECRET =================
-const SECRET = "secretkey";
+const SECRET = process.env.SECRET;
 
 // ================= TOKEN =================
 const getUserFromToken = (req, res) => {
