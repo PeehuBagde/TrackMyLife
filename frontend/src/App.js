@@ -29,6 +29,20 @@ function App() {
   }
   }, []);
 
+  // 🔁 Restore token across refreshes AND reopens (expires automatically after 7 days via backend)
+  useEffect(() => {
+    const savedToken = localStorage.getItem("token");
+    if (savedToken) {
+      setToken(savedToken);
+    }
+  }, []);
+
+  // 🚪 Shared logout — also runs automatically if the backend ever rejects the token (expired/invalid)
+  const logout = useCallback(() => {
+    setToken("");
+    localStorage.removeItem("token");
+  }, []);
+
   // 🔐 LOGIN FUNCTION
   const handleLogin = async () => {
   const res = await fetch("https://trackmylife-backend.onrender.com/login", {
@@ -44,7 +58,7 @@ function App() {
 
   setToken(data.token);
 
-  // ✅ SAVE in localStorage
+  // ✅ Persist across refresh AND reopening the app — token auto-expires after 7 days
   localStorage.setItem("token", data.token);
   };
 
@@ -81,6 +95,11 @@ function App() {
       body: JSON.stringify({ text }),
     });
 
+    if (res.status === 401) {
+      logout(); // token expired or invalid — send back to Login
+      return;
+    }
+
     const data = await res.json();
     setResult(data);
     setText("");
@@ -104,11 +123,16 @@ function App() {
     headers: { Authorization: token },
   });
 
+  if (res.status === 401) {
+    logout(); // token expired or invalid — send back to Login
+    return;
+  }
+
   const data = await res.json();
   console.log("LOGS RESPONSE:", data);
 
 setLogs(Array.isArray(data) ? data : []);
-}, [token]);
+}, [token, logout]);
 
 const fetchStreak = useCallback(async () => {
   if (!token) return;
@@ -118,6 +142,11 @@ const fetchStreak = useCallback(async () => {
       headers: { Authorization: token },
     });
 
+    if (res.status === 401) {
+      logout(); // token expired or invalid — send back to Login
+      return;
+    }
+
     const data = await res.json();
     console.log("STREAK:", data); // 🔥 debug
     setStreak(data.streak);
@@ -125,7 +154,7 @@ const fetchStreak = useCallback(async () => {
   } catch (err) {
     console.error("Streak error:", err);
   }
-}, [token]);
+}, [token, logout]);
 
   // 🔁 run after login
   useEffect(() => {
@@ -261,10 +290,7 @@ if (!token) {
     {/* LOGIN SCREEN */}
     <Dashboard
   streak={streak}
-  onLogout={() => {
-    setToken("");
-    localStorage.removeItem("token");
-  }}
+  onLogout={logout}
   text={text}
   setText={setText}
   handleSubmit={handleSubmit}
