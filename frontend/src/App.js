@@ -201,12 +201,16 @@ const fetchStreak = useCallback(async () => {
   // 🔐 LOGIN SCREEN
 if (!token) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-ink-950 relative overflow-hidden px-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-stone-50 to-orange-50 relative overflow-hidden px-6">
 
-      {/* Signature lamplight glow, same motif as the dashboard */}
+      {/* Signature morning-light glow, same motif as the dashboard */}
       <div
-        className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-30 blur-3xl"
+        className="pointer-events-none absolute -top-32 -left-20 w-[600px] h-[600px] rounded-full opacity-40 blur-3xl"
         style={{ background: "radial-gradient(circle, #E3993B 0%, transparent 65%)" }}
+      />
+      <div
+        className="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-30 blur-3xl"
+        style={{ background: "radial-gradient(circle, #2F6F6D 0%, transparent 65%)" }}
       />
 
       <div className="relative journal-page shadow-page pr-8 py-10 md:pr-10 md:py-12 w-full max-w-md">
