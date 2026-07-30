@@ -33,13 +33,16 @@ function Dashboard(props) {
                     logs={props.logs}
                 />
 
-                <div className="bg-white p-4 rounded-2xl shadow">
+                <div className="journal-page shadow-page pr-6 py-6 md:pr-8 md:py-8">
 
-                    <h2 className="text-xl font-semibold mb-3">
-                        Mood Analytics
+                    <p className="text-plum text-xs font-semibold tracking-[0.2em] uppercase mb-2">
+                        Patterns
+                    </p>
+                    <h2 className="font-display text-2xl text-ink-950 mb-5">
+                        Mood analytics
                     </h2>
 
-                    <div className="w-64 mx-auto">
+                    <div className="w-56 mx-auto">
                         <Pie data={props.chartData} />
                     </div>
 
@@ -49,9 +52,9 @@ function Dashboard(props) {
 
             <button
                 onClick={props.downloadPDF}
-                className="mt-6 w-full bg-purple-500 hover:bg-purple-600 text-white py-3 rounded-lg"
+                className="mt-6 w-full bg-ink-800 hover:bg-ink-700 border border-white/10 text-paper py-3.5 rounded-xl font-semibold transition"
             >
-                Download Report 📄
+                Download report
             </button>
 
         </DashboardLayout>

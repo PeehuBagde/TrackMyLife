@@ -1,11 +1,15 @@
 function DashboardLayout({ children }) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100">
+    <div className="min-h-screen bg-ink-950 relative overflow-hidden">
 
-      <div className="max-w-7xl mx-auto p-8">
+      {/* Soft lamplight glow, top of the page */}
+      <div
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full opacity-30 blur-3xl"
+        style={{ background: "radial-gradient(circle, #E3993B 0%, transparent 65%)" }}
+      />
 
+      <div className="relative max-w-6xl mx-auto px-6 py-10 md:py-14">
         {children}
-
       </div>
 
     </div>

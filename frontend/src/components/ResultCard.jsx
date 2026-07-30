@@ -3,48 +3,42 @@ function ResultCard({ result }) {
   if (!result) return null;
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+    <div className="journal-page shadow-page pr-6 py-6 md:pr-8 md:py-8 mb-6">
 
-      <h2 className="text-2xl font-bold mb-5">
-        📊 Today's Analysis
+      <p className="text-plum text-xs font-semibold tracking-[0.2em] uppercase mb-2">
+        Reflection
+      </p>
+      <h2 className="font-display text-2xl text-ink-950 mb-5">
+        Today's analysis
       </h2>
 
-      <div className="grid md:grid-cols-3 gap-5">
+      <div className="grid md:grid-cols-3 gap-4">
 
-        <div className="bg-green-50 rounded-xl p-5">
-
-          <h3 className="font-semibold text-gray-600">
+        <div className="bg-coral-light rounded-xl p-5">
+          <h3 className="text-xs font-semibold tracking-wide uppercase text-coral">
             Mood
           </h3>
-
-          <p className="text-2xl mt-2">
-            😊 {result.mood}
+          <p className="font-display text-2xl mt-2 text-ink-950 capitalize">
+            {result.mood}
           </p>
-
         </div>
 
-        <div className="bg-blue-50 rounded-xl p-5">
-
-          <h3 className="font-semibold text-gray-600">
+        <div className="bg-teal-light rounded-xl p-5">
+          <h3 className="text-xs font-semibold tracking-wide uppercase text-teal">
             Productivity
           </h3>
-
-          <p className="text-2xl mt-2">
-            🚀 {result.productivity}
+          <p className="font-display text-2xl mt-2 text-ink-950 capitalize">
+            {result.productivity}
           </p>
-
         </div>
 
-        <div className="bg-purple-50 rounded-xl p-5">
-
-          <h3 className="font-semibold text-gray-600">
-            AI Analysis
+        <div className="bg-plum-light rounded-xl p-5">
+          <h3 className="text-xs font-semibold tracking-wide uppercase text-plum">
+            AI insight
           </h3>
-
-          <p className="mt-2">
+          <p className="mt-2 text-ink-950 text-sm leading-relaxed">
             {result.insight}
           </p>
-
         </div>
 
       </div>
