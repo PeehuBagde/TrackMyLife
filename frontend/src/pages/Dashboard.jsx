@@ -11,39 +11,43 @@ function Dashboard(props) {
 
         <DashboardLayout>
 
-            <Header
-                streak={props.streak}
-                onLogout={props.onLogout}
-            />
+            <div id="report">
 
-            <InputCard
-                text={props.text}
-                setText={props.setText}
-                handleSubmit={props.handleSubmit}
-                loading={props.loading}
-            />
-
-            <ResultCard
-                result={props.result}
-            />
-
-            <div className="grid md:grid-cols-2 gap-6">
-
-                <HistoryCard
-                    logs={props.logs}
+                <Header
+                    streak={props.streak}
+                    onLogout={props.onLogout}
                 />
 
-                <div className="journal-page shadow-page pr-6 py-6 md:pr-8 md:py-8">
+                <InputCard
+                    text={props.text}
+                    setText={props.setText}
+                    handleSubmit={props.handleSubmit}
+                    loading={props.loading}
+                />
 
-                    <p className="text-plum text-xs font-semibold tracking-[0.2em] uppercase mb-2">
-                        Patterns
-                    </p>
-                    <h2 className="font-display text-2xl text-ink-950 mb-5">
-                        Mood analytics
-                    </h2>
+                <ResultCard
+                    result={props.result}
+                />
 
-                    <div className="w-56 mx-auto">
-                        <Pie data={props.chartData} />
+                <div className="grid md:grid-cols-2 gap-6">
+
+                    <HistoryCard
+                        logs={props.logs}
+                    />
+
+                    <div className="journal-page shadow-page pr-6 py-6 md:pr-8 md:py-8">
+
+                        <p className="text-plum text-xs font-semibold tracking-[0.2em] uppercase mb-2">
+                            Patterns
+                        </p>
+                        <h2 className="font-display text-2xl text-ink-950 mb-5">
+                            Mood analytics
+                        </h2>
+
+                        <div className="w-56 mx-auto">
+                            <Pie data={props.chartData} />
+                        </div>
+
                     </div>
 
                 </div>
