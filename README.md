@@ -1,6 +1,6 @@
 # 🚀 TrackMyLife
 
-TrackMyLife is an AI-powered journaling application that analyzes daily entries to identify mood and productivity, helping users track their personal growth over time.
+TrackMyLife is an journaling application that analyzes daily entries to identify mood and productivity, helping users track their personal growth over time.
 
 ## ✨ Features
 
