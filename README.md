@@ -6,7 +6,7 @@ TrackMyLife is an journaling application that analyzes daily entries to identify
 
 - 🔐 User Authentication (JWT)
 - 📝 Daily Journal Logging
-- 🤖 AI-based Mood & Productivity Analysis
+- 🤖 Mood & Productivity Analysis
 - 📊 Mood Analytics Dashboard
 - 🔥 Daily Streak Tracker
 - 📄 PDF Report Generation
